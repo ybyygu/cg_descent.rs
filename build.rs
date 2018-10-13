@@ -15,7 +15,7 @@ fn main() {
         .cpp(false)
         .file("lib/cg_descent.c")
         .include("lib")
-        .compile("libcgd.a");
+        .compile("libcg_descent.a");
 
     // println!("cargo:rustc-link-lib=lbfgs");
 
