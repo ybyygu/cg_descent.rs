@@ -221,10 +221,11 @@ int cg_descent /*  return:
     double      grad_tol, /* StopRule = 1: |g|_infty <= max (grad_tol,
                                            StopFac*initial |g|_infty) [default]
                              StopRule = 0: |g|_infty <= grad_tol(1+|f|) */
-    double        (*value) (double *, INT),  /* f = value (x, n) */
-    void           (*grad) (double *, double *, INT), /* grad (g, x, n) */
-    double      (*valgrad) (double *, double *, INT), /* f = valgrad (g,x,n)*/
-    double         *Work  /* either size 4n work array or NULL */
+    double        (*value) (double *, INT, void *),  /* f = value (x, n) */
+    void           (*grad) (double *, double *, INT, void *), /* grad (g, x, n) */
+    double      (*valgrad) (double *, double *, INT, void *), /* f = valgrad (g,x,n)*/
+    double         *Work,  /* either size 4n work array or NULL */
+    void *instance       /* user data for callback */
 ) ;
 
 void cg_default /* set default parameter values */

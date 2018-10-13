@@ -50,10 +50,11 @@ typedef struct cg_com_struct /* common variables */
     double          *d ; /* current search direction */
     double          *g ; /* gradient at x */
     double      *gtemp ; /* gradient at x + alpha*d */
-    double   (*cg_value) (double *, INT) ; /* f = cg_value (x, n) */
-    void      (*cg_grad) (double *, double *, INT) ; /* cg_grad (g, x, n) */
-    double (*cg_valgrad) (double *, double *, INT) ; /* f = cg_valgrad (g,x,n)*/
+    double   (*cg_value) (double *, INT, void *) ; /* f = cg_value (x, n) */
+    void      (*cg_grad) (double *, double *, INT, void *) ; /* cg_grad (g, x, n) */
+    double (*cg_valgrad) (double *, double *, INT, void *) ; /* f = cg_valgrad (g,x,n)*/
     cg_parameter *Parm ; /* user parameters */
+    void *instance;      /* user data for callback */
 } cg_com ;
 
 /* prototypes */
