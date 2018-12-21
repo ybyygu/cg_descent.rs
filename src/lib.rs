@@ -1,9 +1,12 @@
 // base
 
 // [[file:~/Workspace/Programming/rust-libs/cg_descent.rs/cg_descent.note::*base][base:1]]
+#![allow(nonstandard_style)]
+
 use std::ptr::null_mut;
 use std::os::raw::{c_int, c_void, c_long};
 use quicli::prelude::*;
+type Result<T> = ::std::result::Result<T, Error>;
 
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
@@ -88,10 +91,6 @@ impl CGDescent {
 
 #[test]
 fn test_cgdescent() {
-    let mut param = CGParameter::default();
-    param.QuadStep = 0;
-    param.PrintLevel = 1;
-
     let mut cgd = CGDescent::default();
 
     // set starting guess
